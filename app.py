@@ -11,10 +11,8 @@ def extract_data_from_insta_reel(url):
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
 
-        user = info.get("uploader_id")  # Proper @username
-        if user:
-            user = "@" + user
-
+        user = info.get("channel")  # Proper @username
+        
         reel_caption = info.get("description") or "Enjoy this reel"
         reel_caption = reel_caption.replace('\n', ' ').replace(';', ',')
 
